@@ -2,7 +2,7 @@
   "name": "myproject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "something": "node file.js",
     "format": "prettier --write *.js",
