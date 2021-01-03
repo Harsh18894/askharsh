@@ -1,0 +1,765 @@
+<style>
+  mark {
+    background-color: yellow;
+    color: black;
+  }
+</style>
+<center>
+  <h4><strong>Introduction</strong></h4>
+</center>
+<p></p>
+<p>
+  Here, in the final project, I have tried to cover the major parts of the
+  course especially those topics that are challenging and related to version
+  control issues that are faced by developers and alike in a real-world
+  situation. This will enable you to turn yourself into a true Git Pro.
+</p>
+<p></p>
+<p>
+  <strong>Note:</strong> In the Final Project, you are expected to have
+  understood all the concepts and implementation knowledge that have been
+  imparted throughout the course. It is advisable to refer to the training if
+  you get stuck somewhere.
+</p>
+<p></p>
+<p></p>
+<p></p>
+<center style="margin-top: 30px">
+  <h4><strong>Problem Statement</strong></h4>
+</center>
+<p></p>
+<p></p>
+<p>The entire project has been organized under a 10 Step Challenge</p>
+<p></p>
+<p>
+  These challenges will give you hands-on experience in building a Distributed
+  Version Control System using Git &amp; GitHub for source control management of
+  a Software Application.
+</p>
+<p></p>
+<p>
+  Doing this project, you will also get a good understanding of collaboration
+  within a simulated team environment &amp; also understand how to perform an
+  integration test of the entire source control management system.
+</p>
+<p></p>
+<p>The following are the steps that are needed to be taken for this project.</p>
+<p></p>
+<ol>
+  <li>
+    <strong>Setting up a local repository:</strong>
+    <p>
+      For Windows users, you have to set up a local repository using the Bash
+      terminal. For Mac and Linux users, you can use any of the terminals that
+      your operating system offers preferably with a Bash shell.
+    </p>
+  </li>
+
+  <li>
+    <strong
+      >Setting up the remote repo and establishing a connection with the local
+      repo:</strong
+    >
+
+    <p>
+      We will be using GitHub to host the remote repo. You will be working with
+      a single GitHub account.&nbsp;
+    </p>
+
+    <p>
+      <strong>Note:</strong> Only for Step-8, you would be needing two GitHub
+      accounts for teamwork simulation.
+    </p>
+  </li>
+  <li>
+    <strong
+      >Establishing SSH communication between local and remote repo:</strong
+    >
+    <p>
+      Both SSH and HTTPS can be used to carry out all the steps but we preferred
+      to use SSH in this project. SSH is more secure due to its passwordless
+      nature, strong authentication, encryption, etc.
+    </p>
+  </li>
+  <li>
+    <strong>Tackling Commit history:</strong>
+    <p>
+      Commit history is one of the most important aspects of Git. Keep in mind
+      that building a clean commit history goes to a great length in
+      successfully managing your projects
+    </p>
+  </li>
+  <li>
+    <strong
+      >Diving deep into Git Branches (Part 1) - resolving merge
+      conflicts:</strong
+    >
+
+    <p>
+      In this step, you need to create a separate branch and simulate a conflict
+      situation with the master branch. You need to set up your merge tool
+      beforehand to carry out this task.
+    </p>
+  </li>
+  <li>
+    <strong
+      >Diving deep into Git Branches (Part 2) - resolving to rebase
+      conflicts:</strong
+    >
+
+    <p>
+      Rebase is sometimes misunderstood. This step will instill in you a solid
+      knowledge about this important Git process. Like a merge conflict, you
+      need to have a separate branch in order to simulate the conflicting
+      requirements.
+    </p>
+  </li>
+  <li>
+    <strong>Pull from GitHub with rebase option:</strong>
+    <p>
+      This step takes local rebase to another level where you need to work with
+      the upstream repo. It&rsquo;s assumed that you already populated the
+      remote repo with all the artifacts.
+    </p>
+  </li>
+  <li>
+    <strong>Team Collaboration in GitHub using a Pull Request:</strong>
+    <p>
+      This is a truly interesting step. In the real world, nobody works in
+      isolation, be it in the capacity of a developer in a corporate environment
+      or as a freelancer. You need to have two GitHub accounts. The problem of a
+      pull request can be solved in 2 ways where a team member may be a
+      collaborator approved by the repo owner or a non-collaborator. In this
+      project, we have chosen the latter option.
+    </p>
+  </li>
+  <li>
+    <strong>Working with Git Stash:</strong>
+    <p>
+      This step requires you to set the Git Stash list so that you effectively
+      apply the stash-related sub-commands such as - list, show, apply, drop,
+      pop, clear, etc. Here too, you need to create a separate branch to achieve
+      a four-step process.
+    </p>
+  </li>
+  <li>
+    <strong>Delving into Git Tags:</strong>
+    <p>
+      Git tags help a version control engineer to highly organize his commits.
+      You need to set up both lightweight and annotated tags. You need to create
+      a .gitconfig file if you don&rsquo;t already have one in order to automate
+      the pushing of annotated tags as default and automatic behavior.
+    </p>
+  </li>
+</ol>
+<br />
+<p><strong>Note:</strong></p>
+<ul>
+  <li>
+    Information about the above steps has been spelled out in great detail below
+    that makes every item actionable with a fresh experience of challenge and
+    brainstorming.
+  </li>
+  <li>
+    The <mark>yellow highlighted</mark> words which you will find in the steps
+    below indicate the current git branch you are on.
+  </li>
+</ul>
+<p></p>
+<p><strong>Assumptions</strong></p>
+<ul>
+  <li>
+    The student has already (if you haven't done the following, please do so)
+    <ul>
+      <li>
+        installed a visual text editor as the default text editor for Git
+        (mandatory)
+      </li>
+      <li>
+        installed p4merge as the default diff and merge tool for Git (mandatory)
+      </li>
+    </ul>
+  </li>
+  <li>
+    The terms &ldquo;folder&rdquo; and &ldquo;directory&rdquo; may be used
+    interchangeably
+  </li>
+  <li>
+    The terms &ldquo;repo&rdquo; and &ldquo;repository&rdquo; may be used
+    interchangeably
+  </li>
+</ul>
+<p></p>
+<center style="margin-top: 30px">
+  <h4>
+    <strong>Approach: Follow the steps and complete the assignment</strong>
+  </h4>
+</center>
+<p></p>
+<p><strong>Step-1: Setting up a local repository:</strong></p>
+<ol type="a">
+  <li>Go to https://github.com/bibroy/downloads</li>
+  <li>Click on the file link initializr-verekia-4.0.zip</li>
+  <li>Click on the Download button to download the file.</li>
+  <li>
+    Once the file is&nbsp; downloaded, open your Git Bash terminal (if you are a
+    Windows user) or any terminal where you can Bash commands
+  </li>
+  <li>
+    CD (change directory) to the directory where you want to create your Git
+    Repository for the Final Project. Let&rsquo;s call this directory
+    &ldquo;git-fast&rdquo; (your chosen directory can have a different name; we
+    chose this name just for the purpose of explaining the project)
+  </li>
+  <li>
+    <mark>(git-fast)</mark> Copy the downloaded file initializr-verekia-4.0.zip
+    to &ldquo;git-fast&rdquo; directory&nbsp;
+  </li>
+  <li><mark>(git-fast)</mark> Unzip the file initializr-verekia-4.0.zip</li>
+  <li>
+    <mark>(git-fast)</mark> Unzipping will create a directory called
+    &ldquo;initializr&rdquo;
+  </li>
+  <li>
+    <mark>(git-fast)</mark> Rename the directory &ldquo;initializr&rdquo; to
+    &ldquo;insh-final-project&rdquo;
+  </li>
+  <li>
+    <mark>(git-fast)</mark> CD (change directory) to the directory
+    &ldquo;insh-final-project&rdquo;
+  </li>
+  <li>
+    <mark>(insh-final-project)</mark> Initialize the repository with &ldquo;git
+    init&rdquo; command
+  </li>
+  <li>
+    <mark>(master)</mark> Now you are on the master branch of the repository.
+    List all the files/directories including hidden files. Can you see the
+    &ldquo;.git&rdquo; hidden directory? If yes, then follow the steps below:
+  </li>
+  <li>
+    <mark>(master)</mark> Add all the files/directories to the staging area
+  </li>
+  <li>
+    <mark>(master)</mark> Commit all the artifacts (files/directories). The
+    commit message is &ldquo;initial commit&rdquo;. Let&rsquo;s say, the hash is
+    commit-1 (actually the commit has is an alphanumeric number but we are using
+    terms such as &ldquo;commit-1&rdquo; for the sake of simplicity)&nbsp;
+  </li>
+  <li>
+    <mark>(master)</mark> Run the git status command to see if the working
+    directory is clean. If it&rsquo;s clean, then follow the next step below:
+  </li>
+</ol>
+<p></p>
+<p>
+  <strong>Step-2: Setting up the remote repo and establishing a connection with the
+    local repo:</strong>
+</p>
+<ol type="a">
+  <li>
+    Go to github.com. Create a remote repo on GitHub. The remote repo name
+    should be the same as the local repo i.e, &ldquo;insh-final-project&rdquo;.
+    You may add README file, LICENSE, and .gitignore files
+  </li>
+  <li>Go to your Bash Terminal</li>
+  <li>
+    <mark>(master)</mark> Add a remote named &ldquo;origin&rdquo; for the remote
+    repo&nbsp;
+  </li>
+  <li>
+    <mark>(master)</mark> Now cross-check the creation of the remote added in
+    the above step by running the appropriate git&nbsp; command
+  </li>
+  <li>
+    <mark>(master)</mark> Push all the artifacts from the local repo to the
+    remote repo
+  </li>
+  <li>
+    <mark>(master)</mark> Now cross-check the creation of remote reference
+    branch &ldquo;origin&rdquo; by running the appropriate git&nbsp; command
+  </li>
+  <li>
+    Go to github.com and check if all of your artifacts got pushed from the
+    local repo
+  </li>
+</ol>
+<p></p>
+<p>
+  <strong>Step-3: Establishing SSH communication between local and remote
+    repo:</strong>
+</p>
+<ol type="a">
+  <li>Open your bash terminal. You are within the local repo</li>
+  <li>
+    <mark>(master)</mark> Generate the SSH keys using the appropriate bash
+    command. Use the following specifications:
+    <ol type="i">
+      <li>Key type: RSA</li>
+      <li>Key length: 2048 bits</li>
+      <li>Avoid passphrase for the keys for the purpose of this project</li>
+    </ol>
+  </li>
+  <li>
+    <mark>(master)</mark> Check if the keys have been generated successfully.
+    Let&rsquo;s assume the name of the private key is &ldquo;id_rsa&rdquo; and
+    the public key is &ldquo;id_rsa.pub&rdquo;
+  </li>
+  <li><mark>(master)</mark> Copy the public SSH key to the clipboard</li>
+  <li>Go to github.com and create the SSH key</li>
+  <li>
+    <mark>(master)</mark> Go to your bash terminal and test the SSH
+    connection.&nbsp;
+  </li>
+  <li>Are you behind a firewall? If yes run the appropriate command</li>
+  <li>If you are not behind a firewall, run the appropriate command</li>
+  <li>If the test succeeds then proceed to the next step.</li>
+  <li>
+    <mark>(master)</mark> Now the default connection between remote and local
+    repo is via HTTPS. Hence you need to switch from HTTPS to SSH. Run the
+    appropriate git command to make the switch from HTTPS to SSH
+  </li>
+  <li>
+    Run the appropriate git command to test if the protocol switch (HTTPS to
+    SSH) worked correctly.
+  </li>
+  <li>
+    <mark>(master)</mark> Make some changes in the humans.txt file and push to
+    the remote repo to make a final test if all with SSH connection works good
+    or not
+  </li>
+</ol>
+<p></p>
+<p><strong>Step-4: Commit history in-depth</strong></p>
+<ol type="a">
+  <li>
+    Let&rsquo;s build up the commit history since we have very few commits now.
+    You can choose your own commit messages.
+    <ol type="i">
+      <li>
+        <mark>(master)</mark> Make two changes in robots.txt and commit them
+        separately to have two additional commits.
+      </li>
+      <li>
+        <mark>(master)</mark> Make two changes in humans.txt and commit them
+        separately to have two additional commits.
+      </li>
+      <li>
+        <mark>(master)</mark> Create a branch called feature-branch-1 and
+        checkout to the branch
+      </li>
+      <li>
+        <mark>(feature-branch-1)</mark> Make two changes in browserconfig.xml
+        and commit them separately to have two additional commits in this branch
+      </li>
+    </ol>
+  </li>
+  <li>(feature-branch-1) checkout to the master branch</li>
+  <li>
+    <mark>(master)</mark> Run git log command with necessary options that do the
+    following
+    <ol type="i">
+      <li>Decorates commit history with branch names</li>
+      <li>Prints a graph of branches and</li>
+      <li>Includes history of all branches</li>
+      <li>History is displayed in one line per commit</li>
+    </ol>
+  </li>
+  <li>
+    <mark>(master)</mark> Run git log command with the right option that does
+    the following - gives information about which files were altered as well as
+    the number of lines added/deleted from each file (Hint: type &ldquo;q&rdquo;
+    to quit if the information displayed is more than that can be accommodated
+    in a single screen)
+  </li>
+  <li>
+    <mark>(master)</mark> Run git log command with the right option that
+    provides patch information such as diff (Hint: type &ldquo;q&rdquo; to quit)
+  </li>
+  <li>
+    <mark>(master)</mark> Run git log command to display commit history for the
+    directory &ldquo;css&rdquo; only
+  </li>
+  <li>
+    <mark>(master)</mark> Run git log command with the right option which allows
+    searching to commit history that contains a particular query string. As an
+    example, the solution to this project takes &ldquo;initial&rdquo; as the
+    query string to search the commit-hash for the initial commit.
+  </li>
+  <p></p>
+</ol>
+<p>
+  <strong>Step-5: Diving deep into Git Branches (Part 1) - resolving merge
+    conflicts</strong>
+</p>
+<ol type="a">
+  <li>
+    <mark>(master)</mark> Create a branch feature-branch-2 and checkout to the
+    same
+  </li>
+  <li>
+    <mark>(feature-branch-2)</mark> Make three simple changes in of the
+    three&nbsp; lines of index.html
+  </li>
+  <li><mark>(feature-branch-2)</mark> commit your changes</li>
+  <li><mark>(feature-branch-2)</mark> checkout to the master branch</li>
+  <li>
+    <mark>(master)</mark> Make 3 different simple changes in the same 3 lines of
+    index.html as was done in the feature-branch-2 (Hint: we need to create
+    conflicting changes for the purposes of this project)
+  </li>
+  <li>(master) commit your changes</li>
+  <li>
+    <mark>(master)</mark> Run a diff to visually inspect the differences &amp;
+    potential conflicts (before merging) with p4merge
+  </li>
+  <li>
+    <mark>(master)</mark> Merge the feature-branch-2 with master. Merge conflict
+    is expected to occur
+  </li>
+  <li>
+    <mark>(master)</mark> Run visual merge tool p4merge. Visually, resolve the
+    merge conflicts. Retain the changes which you want to keep and dismiss
+    others. Save and exit p4merge tool.
+  </li>
+  <li><mark>(master)</mark> Commit changes to conclude merge</li>
+  <li>
+    <mark>(master)</mark> Confirm that conflicts have been resolved (Hint: git
+    status)
+  </li>
+  <li>
+    If you see any generated file with .orig extension, then proceed to complete
+    the following items in Step-5
+  </li>
+  <li>
+    <mark>(master)</mark> Create .gitignore if it doesn&rsquo;t exist. Add
+    appropriate entry within the .gitignore file such that .orig files are
+    ignored.
+  </li>
+  <li><mark>(master)</mark> Add .gitignore file to the staging</li>
+  <li><mark>(master)</mark> Commit changes</li>
+  <li><mark>(master)</mark> Check commit history to see if everything is OK</li>
+  <li>
+    <mark>(master)</mark> Delete branch feature-branch-2 now that you are done
+    with conflict resolution
+  </li>
+  <li><mark>(master)</mark> Merge feature-branch-1 with master</li>
+</ol>
+<p></p>
+<p>
+  <strong>Step-6: Diving deep into Git Branches (Part 2) - resolving to rebase
+    conflicts</strong>
+</p>
+<ol type="a">
+  <li>
+    <mark>(master)</mark> Create a branch feature-branch-3 and checkout to the
+    same
+  </li>
+  <li>
+    <mark>(feature-branch-2)</mark> Make three simple changes in of the three
+    lines of 404.html
+  </li>
+  <li><mark>(feature-branch-2)</mark> commit your changes</li>
+  <li><mark>(feature-branch-2)</mark> checkout to the master branch</li>
+  <li>
+    <mark>(master)</mark> Make 3 different simple changes in the same 3 lines of
+    404.html as was done in the feature-branch-3 (Hint: we need to create
+    conflicting changes for the purposes of creating rebase conflict)
+  </li>
+  <li><mark>(master)</mark> Commit your changes</li>
+  <li><mark>(master)</mark> Checkout to feature-branch-3</li>
+  <li>
+    <mark>(feature-branch-2)</mark> Rebase feature-branch-3 with the master.
+    Rebase conflict is expected to occur
+  </li>
+  <li>
+    <mark>(feature-branch-2)</mark> Run visual merge tool p4merge. Visually,
+    resolve the rebase conflicts. Retain the changes which you want to keep and
+    dismiss others.&nbsp; Save and exit p4merge tool
+  </li>
+  <li>
+    <mark>(feature-branch-2)</mark> After resolving conflicts visually, continue
+    with rebase by running the &ldquo;git rebase&rdquo; command with the right
+    option
+  </li>
+  <li>
+    <mark>(feature-branch-2)</mark> Check 404.html to see if conflict resolution
+    is rightly reflected in the file content.
+  </li>
+  <li>
+    <mark>(feature-branch-2)</mark> Check the commit history to ensure that all
+    looks good from the rebasing perspective
+  </li>
+  <li><mark>(feature-branch-2)</mark> Checkout master branch</li>
+  <li><mark>(master)</mark> Merge feature-branch-3 with master</li>
+  <li>
+    <mark>(master)</mark> Check the commit history again to ensure that all
+    looks good.
+  </li>
+  <li>
+    <mark>(master)</mark> Delete branch feature-branch-3 now that you are done
+    with rebase conflict resolution
+  </li>
+  <li>
+    <mark>(master)</mark> Check the commit history again to see that all branch
+    labels related to feature-branch-1 have been removed from the history
+  </li>
+  <p></p>
+</ol>
+<p><strong>Step-7: Pull from GitHub with rebase option</strong></p>
+<ol type="a">
+  <li><mark>(master)</mark> Let&rsquo;s run the git status command</li>
+  <li>
+    <mark>(master)</mark> When you run the &ldquo;git status&rdquo; command, you
+    might notice that Git comes with a statement something similar to - Your
+    branch is ahead of 'origin/master' by x commits, where the value of x
+    depends on the number of pending commits to be pushed.
+  </li>
+  <li>
+    <mark>(master)</mark> So, let&rsquo;s push all the changes in our local repo
+    to our upstream (remote) repo at GitHub
+  </li>
+  <li>
+    <mark>(master)</mark> Once the push is done, let&rsquo;s make 2 separate
+    changes (in our local repo) to the robots.txt file and commit each time and
+    thus generating 2 separate commits
+  </li>
+  <li>
+    Now go to the remote repo on GitHub and make 2 separate changes to the
+    humans.txt file and commit each time and thus generating 2 separate commits.
+    (Note: normally we don&rsquo;t make changes directly on the remote repo.
+    Usually what happens is that some other team members push their changes on
+    to the remote and we pull the upstream changes in our local repo. But here,
+    we are making changes directly on the remote repo in order to simulate a
+    collaborative situation)
+  </li>
+  <li>
+    <mark>(master)</mark> Once the changes are done in the local and remote
+    repo, do a git pull with rebase option in your local repo.&nbsp;
+  </li>
+  <li>
+    <mark>(master)</mark> Run a git log command. Can you see your local unpushed
+    commits (to robots.txt) sitting on top (rebased) of the remote changes you
+    pulled in? If yes, then you are good.
+  </li>
+  <p></p>
+</ol>
+<p>
+  <strong>Step-8: Team Collaboration in GitHub using a Pull request&nbsp;</strong>
+</p>
+<ol type="a">
+  <li>
+    Setup
+    <ul>
+      <li>
+        You need to have two GitHub accounts. Assuming you already have one
+        GitHub account, please create another GitHub account.
+      </li>
+      <li>
+        Let&rsquo;s refer to the username for one account as &ldquo;bob&rdquo;
+        and the username for another account as &ldquo;alice&rdquo; for the sake
+        of explaining (Your actual GitHub usernames can be different).&nbsp;
+      </li>
+      <li>
+        Let&rsquo;s assume you are Bob and Bob is the owner of the GitHub
+        repository and Alice is the collaborator
+      </li>
+      <li>
+        Let&rsquo;s name the repository as &ldquo;pull-request-demo&rdquo; of
+        which Bob is the owner as (The actual name of your repository can be
+        different).&nbsp;
+      </li>
+      <li>
+        Since in reality both Bob &amp; Alice are you, use 2 different browsers
+        for each of them for accessing GitHub for simulating a collaborative
+        environment.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Assignment
+    <ul>
+      <li>
+        Now above is the setup. This setup demonstrates how Alice and make a
+        Pull Request to Bob and the latter can approve it for merging.
+      </li>
+    </ul>
+  </li>
+</ol>
+<p></p>
+<p><strong>Step-9: Working with Git Stash</strong></p>
+<ol type="a">
+  <li>
+    Working on the Master branch
+    <ul>
+      <li>Edit index.html. Add some simple changes</li>
+      <li>Now stash away the changes without any comment</li>
+      <li>Now display the list of all stashes</li>
+      <li>Edit 404.html. Add some simple changes</li>
+      <li>
+        Now stash away the above changes with a suitable comment that will help
+        you to identify the stash
+      </li>
+      <li>Now display the list of all stashes</li>
+      <li>Edit browserconfig.xml. Add some simple changes</li>
+      <li>Add the above change to the staging area</li>
+      <li>
+        Now stash away the above changes with a suitable comment that will help
+        you to identify the stash
+      </li>
+      <li>Now display the list of all stashes</li>
+      <li>Create a new file test-file.txt</li>
+      <li>
+        Now stash away the changes without any comment (Hint: test-file.txt is
+        an untracked file)
+      </li>
+      <li>Now display the list of all stashes</li>
+      <li>Now show the details of stash@{3}</li>
+      <li>Apply stash@{3}</li>
+      <li>
+        Commit the uncommitted changes after applying the above stash. Add a
+        suitable comment to identify the commit
+      </li>
+      <li>Drop stash@{3}</li>
+      <li>Now display the list of all stashes</li>
+      <li>Now pop stash@{0} (Hint: apply and drop in a single command)</li>
+      <li>Now add the changes in the working tree to the staging area</li>
+      <li>
+        Commit the uncommitted changes with a suitable comment to identify the
+        commit
+      </li>
+      <li>Now display the list of all stashes</li>
+      <li>Now pop stash@{0} (Hint: apply and drop in a single command)</li>
+      <li>Again, pop stash@{0} (Hint: apply and drop in a single command)</li>
+      <li>
+        Now stash away the above changes with a suitable comment that will help
+        you to identify the stash
+      </li>
+    </ul>
+  </li>
+  <li>
+    Working on a new Branch
+    <ul>
+      <li>Now display the list of all stashes</li>
+      <li>
+        Stash away all the changes to a new branch called
+        &ldquo;stashedbranch&rdquo;.
+      </li>
+      <li>
+        The above step will apply all of the stash and hence you need to rebuild
+        the stash list. Stash the changes without comment.
+      </li>
+      <li>
+        Now display the list of all stashes (Hint&rdquo; there should be a
+        single entry in the list)
+      </li>
+      <li>
+        We now decide to scrap all of our stash and delete the branch. So clear
+        the stash
+      </li>
+      <li>
+        Now display the list of all stashes to ensure that there are no entries
+        in the stash
+      </li>
+      <li>Checkout to the master branch</li>
+      <li>Delete the branch named &ldquo;stashedbranch&rdquo;</li>
+    </ul>
+  </li>
+</ol>
+<p></p>
+
+<p><strong>Step-10: Delving into Git Tags</strong></p>
+<ol type="a">
+  <li>
+    Create a lightweight tag named "v2.5-lightweight-tag"; tag it to the latest
+    commit
+  </li>
+  <li>Edit index.html and make a simple change</li>
+  <li>Commit your changes</li>
+  <li>
+    Create an annotated tag named &ldquo;v2.9-annotated-tag&rdquo; with a tag
+    message; tag it to the latest commit
+  </li>
+  <li>Edit 404.html and make a simple change</li>
+  <li>Commit your changes to 404.html&nbsp;</li>
+  <li>
+    Create another annotated tag named &ldquo;v3.9-annotated-tag&rdquo; with a
+    tag message; tag it to the latest commit. This time, add the tag message
+    using your default text editor for Git
+  </li>
+  <li>Display list of available tags in the repo</li>
+  <li>Display tag details for the tag &ldquo;v3.9-annotated-tag&rdquo;</li>
+  <li>Confirm that tag &ldquo;v3.9-annotated-tag&rdquo; is an annotated tag</li>
+  <li>List all tags whose name contains the string &ldquo;annotated&rdquo;</li>
+  <li>
+    Do a &ldquo;git diff&rdquo; between v2.9-annotated-tag and
+    v3.9-annotated-tag
+  </li>
+  <li>Edit robots.txt and make a simple change</li>
+  <li>Commit your changes to &ldquo;robots.txt&rdquo;&nbsp;</li>
+  <li>
+    Create an annotated tag named &ldquo;v4.9-simple-annotated-tag&rdquo; with a
+    tag message; tag it to the latest commit
+  </li>
+  <li>Display list of available tags in the repo</li>
+  <li>Delete tag &ldquo;v4.9-simple-annotated-tag&rdquo;</li>
+  <li>
+    Confirm tag has been deleted by displaying [1] list of tags [2] commit
+    history
+  </li>
+  <li>
+    Modify git configuration to turn on pushing (to remote repo) of annotated
+    tags by default
+  </li>
+  <li>Confirm whether git configuration is updated properly</li>
+  <li>
+    Now push all annotated tags (not lightweight tag) along with all local
+    commits. Confirm from GitHub repo that all annotated tags have been pushed
+    but no lightweight tags were pushed
+  </li>
+  <li>
+    Delete tag &ldquo;v2.9-annotated-tag&rdquo; from remote repo; confirm from
+    GitHub repo if the tag was deleted
+  </li>
+</ol>
+<p></p>
+<center>
+  <h4><strong>Submission</strong></h4>
+</center>
+<p></p>
+<p>
+  After completing the assignment, upload the text solution file. This file
+  should contain the following:
+</p>
+<ul>
+  <li>
+    All git commands run for each of the steps of the assignment/project. Each
+    command should start with &ldquo;$&rdquo; + single space
+  </li>
+  <li>
+    Each command should be preceded by a line (or lines) of comment starting
+    with a &ldquo;#&rdquo; + single space. The comment should describe the
+    purpose of execution of the command.&nbsp;
+  </li>
+  <li>
+    If the assignment/project involves working with GitHub, describe the steps
+    taken in a step by step manner. The steps can be explained using comments
+    (beginning with&nbsp; a &ldquo;#&rdquo; + single space)&nbsp;
+  </li>
+  <li>
+    Each step mentioned in the assignment should be separated from other steps
+    by few blank i.e new lines. You need to mention the step number, optionally
+    with a description mentioning the purpose..
+  </li>
+</ul>
+<p></p>
+<center>
+  <h4><strong>Solution</strong></h4>
+</center>
+<p></p>
+<p>
+  You can download the solution to the assignment from the progress report once
+  you have uploaded the solution. You may compare your solution with the
+  provided one.
+</p>
+<p></p>
